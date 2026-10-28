@@ -1,0 +1,22 @@
+{
+  "name": "fecto",
+  "version": "0.4.0",
+  "description": "Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.",
+  "author": {
+    "name": "Fecto",
+    "url": "https://fecto.ai"
+  },
+  "homepage": "https://fecto.ai",
+  "privacyPolicyUrl": "https://fecto.ai/privacy",
+  "license": "LicenseRef-Fecto",
+  "icon": ".claude-plugin/icon.png",
+  "keywords": [
+    "seo",
+    "geo",
+    "aeo",
+    "ai-search",
+    "website",
+    "performance",
+    "outcome-pricing"
+  ]
+}

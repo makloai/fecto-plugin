@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fecto": {
+      "type": "http",
+      "url": "https://fecto.ai/api/mcp"
+    }
+  }
+}
