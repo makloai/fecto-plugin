@@ -23,7 +23,7 @@ codex mcp login fecto --scopes mcp,offline_access
 
 The last command opens your browser to sign in to Fecto.
 
-Or both at once: `curl -fsSL https://fecto-flax.vercel.app/install | sh` installs this plugin into whichever of Claude Code and Codex you have.
+Or both at once: `curl -fsSL https://fecto.ai/install | sh` installs this plugin into whichever of Claude Code and Codex you have.
 
 ## Skills
 
@@ -40,7 +40,7 @@ Text Fecto returns from other sites (fields marked untrusted: AI answers, cited 
 No-code site the builder can't fix, and the owner wants it in code: get_rebuild_inventory → rebuild and deploy to a preview on the owner's host → compare_rebuild until ok → the owner moves the domain. Fecto hosts nothing.
 Skills (get_skill with a name, or the prompts of the same names): fix-site, move-to-code, ai-search.
 
-Privacy: https://fecto-flax.vercel.app/privacy
+Privacy: https://fecto.ai/privacy
 
 ## Developing
 
@@ -52,4 +52,4 @@ claude plugin validate --strict .
 
 The skills call the Fecto MCP server's tools by name; keep them in step with the tools the server registers.
 
-The MCP server URL in `.mcp.json` and the links in the manifests point at Fecto's live deployment, `fecto-flax.vercel.app`. When fecto.ai serves the app, change them together (sign-in tokens are only good for the URL the server names as its own).
+The MCP server URL in `.mcp.json` must be the URL Fecto names as its own (`https://fecto.ai`): sign-in tokens are only good for that URL.

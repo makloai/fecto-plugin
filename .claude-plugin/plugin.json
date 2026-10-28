@@ -1,13 +1,13 @@
 {
   "name": "fecto",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.",
   "author": {
     "name": "Fecto",
-    "url": "https://fecto-flax.vercel.app"
+    "url": "https://fecto.ai"
   },
-  "homepage": "https://fecto-flax.vercel.app",
-  "privacyPolicyUrl": "https://fecto-flax.vercel.app/privacy",
+  "homepage": "https://fecto.ai",
+  "privacyPolicyUrl": "https://fecto.ai/privacy",
   "license": "LicenseRef-Fecto",
   "icon": ".claude-plugin/icon.png",
   "keywords": [

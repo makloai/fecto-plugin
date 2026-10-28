@@ -2,7 +2,7 @@
   "mcpServers": {
     "fecto": {
       "type": "http",
-      "url": "https://fecto-flax.vercel.app/api/mcp"
+      "url": "https://fecto.ai/api/mcp"
     }
   }
 }
