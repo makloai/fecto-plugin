@@ -10,7 +10,7 @@
       "name": "fecto",
       "source": "./",
       "description": "Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.",
-      "version": "0.4.2"
+      "version": "0.4.3"
     }
   ]
 }
