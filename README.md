@@ -2,8 +2,6 @@
 
 Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.
 
-Generated from the Fecto app's skills source; don't edit this repository by hand, changes are overwritten.
-
 ## Install
 
 ```
@@ -29,3 +27,13 @@ No-code site the builder can't fix, and the owner wants it in code: get_rebuild_
 Skills (get_skill with a name, or the prompts of the same names): fix-site, move-to-code, ai-search.
 
 Privacy: https://fecto.ai/privacy
+
+## Developing
+
+This repository is the plugin's source. Edit the skills under `skills/` and the manifests under `.claude-plugin/` here, bump `version` in both `plugin.json` and `marketplace.json`, and check with:
+
+```
+claude plugin validate --strict .
+```
+
+The skills call the Fecto MCP server's tools by name; keep them in step with the tools the server registers.
