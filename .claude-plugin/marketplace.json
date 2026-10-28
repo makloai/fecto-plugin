@@ -1,16 +1,16 @@
 {
   "name": "fecto",
-  "description": "Fecto's plugin for Claude Code: fix your site, pay only for proven results.",
+  "description": "Fecto's plugin for Claude Code and Codex: fix your site, pay only for proven results.",
   "owner": {
     "name": "Fecto",
-    "url": "https://fecto.ai"
+    "url": "https://fecto-flax.vercel.app"
   },
   "plugins": [
     {
       "name": "fecto",
       "source": "./",
       "description": "Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.",
-      "version": "0.4.0"
+      "version": "0.4.1"
     }
   ]
 }
