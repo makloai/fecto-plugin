@@ -12,14 +12,14 @@ Claude Code:
 
 ```
 claude plugin marketplace add makloai/plugins
-claude plugin install fecto@fecto
+claude plugin install fecto@makloai
 ```
 
 Codex:
 
 ```
 codex plugin marketplace add makloai/plugins
-codex plugin add fecto@fecto
+codex plugin add fecto@makloai
 ```
 
 Each plugin's README covers its setup after install.

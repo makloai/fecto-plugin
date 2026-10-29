@@ -8,16 +8,16 @@ Claude Code:
 
 ```
 claude plugin marketplace add makloai/plugins
-claude plugin install fecto@fecto
+claude plugin install fecto@makloai
 ```
 
-Inside a session, `/plugin marketplace add makloai/plugins` and then `/plugin install fecto@fecto` do the same. Then run `/mcp`, choose fecto and sign in.
+Inside a session, `/plugin marketplace add makloai/plugins` and then `/plugin install fecto@makloai` do the same. Then run `/mcp`, choose fecto and sign in.
 
 Codex:
 
 ```
 codex plugin marketplace add makloai/plugins
-codex plugin add fecto@fecto
+codex plugin add fecto@makloai
 codex mcp login fecto --scopes mcp,offline_access
 ```
 
