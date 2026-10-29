@@ -7,16 +7,16 @@ Fix your website for a result you pay for only when Fecto's published checks pro
 Claude Code:
 
 ```
-claude plugin marketplace add makloai/fecto-plugin
+claude plugin marketplace add makloai/plugins
 claude plugin install fecto@fecto
 ```
 
-Inside a session, `/plugin marketplace add makloai/fecto-plugin` and then `/plugin install fecto@fecto` do the same. Then run `/mcp`, choose fecto and sign in.
+Inside a session, `/plugin marketplace add makloai/plugins` and then `/plugin install fecto@fecto` do the same. Then run `/mcp`, choose fecto and sign in.
 
 Codex:
 
 ```
-codex plugin marketplace add makloai/fecto-plugin
+codex plugin marketplace add makloai/plugins
 codex plugin add fecto@fecto
 codex mcp login fecto --scopes mcp,offline_access
 ```

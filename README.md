@@ -11,14 +11,14 @@ makloai's marketplace of plugins for Claude Code and Codex.
 Claude Code:
 
 ```
-claude plugin marketplace add makloai/fecto-plugin
+claude plugin marketplace add makloai/plugins
 claude plugin install fecto@fecto
 ```
 
 Codex:
 
 ```
-codex plugin marketplace add makloai/fecto-plugin
+codex plugin marketplace add makloai/plugins
 codex plugin add fecto@fecto
 ```
 
