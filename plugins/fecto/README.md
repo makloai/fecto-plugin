@@ -30,6 +30,7 @@ Or both at once: `curl -fsSL https://fecto.ai/install | sh` installs this plugin
 - `fecto:fix-site`: Fix my site with Fecto
 - `fecto:move-to-code`: Move a no-code site into code
 - `fecto:ai-search`: Show up in AI search with Fecto
+- `fecto:dashboard`: A local dashboard of the numbers that matter for your site, from your own Search Console, GA4, PostHog, Plausible or Stripe
 
 ## How it works
 
