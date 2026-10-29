@@ -1,6 +1,6 @@
 {
   "name": "fecto",
-  "description": "Fecto's plugin for Claude Code and Codex: fix your site, pay only for proven results.",
+  "description": "makloai's plugins for Claude Code and Codex.",
   "owner": {
     "name": "Fecto",
     "url": "https://fecto.ai"
@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "fecto",
-      "source": "./",
+      "source": "./plugins/fecto",
       "description": "Fix your website for a result you pay for only when Fecto's published checks prove it on the live site: AI search readability (ChatGPT, Claude, Perplexity, Google AI), answers to your buyers' questions, speed, working forms and more conversions. Every change is a pull request you review.",
       "version": "0.4.3"
     }
