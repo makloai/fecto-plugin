@@ -1,0 +1,95 @@
+{
+  "site": "brightsmile-dental.com",
+  "siteType": "local service (dental clinic, lead gen)",
+  "moneyAction": "a visitor books an appointment or calls",
+  "periodDays": 28,
+  "sources": {
+    "gsc": { "siteUrl": "sc-domain:brightsmile-dental.com" },
+    "posthog": { "host": "https://us.posthog.com", "projectId": "12345" }
+  },
+  "sections": [
+    {
+      "title": "Leads",
+      "items": [
+        {
+          "id": "bookings",
+          "label": "Appointment requests",
+          "northStar": true,
+          "source": "posthog",
+          "spec": { "select": "count()", "where": "event = 'booking_submitted'" },
+          "why": "Each request is a likely new patient; this is the number the site exists to grow."
+        },
+        {
+          "id": "calls",
+          "label": "Phone taps",
+          "source": "posthog",
+          "spec": { "select": "count()", "where": "event = '$autocapture' AND elements_chain_href LIKE 'tel:%'" },
+          "why": "Many patients call instead of booking online."
+        },
+        {
+          "id": "visitors",
+          "label": "Visitors",
+          "source": "posthog",
+          "spec": { "select": "count(distinct person_id)", "where": "event = '$pageview'" }
+        },
+        {
+          "id": "booking_rate",
+          "label": "Visitor → request",
+          "source": "ratio",
+          "numerator": "bookings",
+          "denominator": "visitors",
+          "format": "percent",
+          "why": "If this drops while visitors hold, something on the booking path broke."
+        }
+      ]
+    },
+    {
+      "title": "Found in search",
+      "items": [
+        {
+          "id": "organic_nonbrand_clicks",
+          "label": "Google clicks (not searching our name)",
+          "source": "gsc",
+          "spec": {
+            "metric": "clicks",
+            "filters": [{ "dimension": "query", "operator": "excludingRegex", "expression": "bright ?smile" }]
+          },
+          "why": "New patients who didn't know us yet."
+        },
+        {
+          "id": "avg_position",
+          "label": "Average Google position",
+          "source": "gsc",
+          "spec": { "metric": "position" },
+          "format": "decimal",
+          "goodWhen": "down"
+        },
+        {
+          "id": "ai_referrals",
+          "label": "Visits from AI assistants",
+          "source": "posthog",
+          "spec": {
+            "select": "count(distinct properties.$session_id)",
+            "where": "event = '$pageview' AND match(properties.$referring_domain, 'chatgpt\\\\.com|openai\\\\.com|perplexity\\\\.ai|claude\\\\.ai|gemini\\\\.google\\\\.com|copilot\\\\.microsoft\\\\.com')"
+          },
+          "why": "People who asked ChatGPT, Perplexity, Claude or Gemini for a dentist and were sent here."
+        },
+        {
+          "id": "top_queries",
+          "type": "table",
+          "label": "Searches that bring patients",
+          "source": "gsc",
+          "spec": { "dimension": "query", "limit": 10 }
+        },
+        {
+          "id": "near_page_one",
+          "type": "table",
+          "label": "Almost on page one (positions 4–15)",
+          "source": "gsc",
+          "spec": { "dimension": "query", "positionRange": [4, 15], "sortBy": "impressions", "limit": 10 },
+          "why": "Searches people already make where a better page could move the site up."
+        }
+      ]
+    }
+  ]
+}
