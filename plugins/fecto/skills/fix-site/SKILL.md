@@ -1,11 +1,11 @@
 ---
 name: fix-site
-description: Fix a website for a result the owner pays for only when Fecto's published checks prove it on the live site. Use when the user asks to check, audit, speed up or fix their website, get its contact form or booking working, get more enquiries, bookings or leads from it, or mentions Fecto. Fecto quotes one goal at a fixed price, charges only for what its checks prove ($0 if nothing passes), and every change is a pull request the owner reviews. For showing up in ChatGPT, Claude, Perplexity or Google's AI answers, use fecto:ai-search. Needs the Fecto MCP server.
+description: Fix a website for a result the owner pays for only when Fecto's published checks prove it on the live site. Use when the user asks to check, audit, speed up or fix their website, get its contact form or booking working, get more enquiries, bookings or leads from it, or mentions Fecto. Fecto prices one result the owner can see (more visits from search, more visits from AI assistants, more enquiries and bookings) by how much it rises (+20% $30, +50% $60, +100% $100), counted by its own tag, $0 below +20%; every change is a pull request the owner reviews. For showing up in ChatGPT, Claude, Perplexity or Google's AI answers, use fecto:ai-search. Needs the Fecto MCP server.
 ---
 
 # Fecto: tell us the goal, pay for the result
 
-Fecto scans a website, prices one goal at a time, and charges only for what its published checks prove on the live site. You (the owner's coding agent) do the work in their repo, one pull request per change. You never accept prices or merge; the owner does. Fecto judges the result with rules frozen when the owner accepts; you never decide whether a goal is met.
+Fecto sells results, not tasks. The owner picks a result they can see: more visits from Google and other search engines, more visits from AI assistants, or more enquiries and bookings. Fecto prices it by how much it rises over a starting point, in bands: +20% $30, +50% $60, +100% $100, $0 below +20%. It counts the result with its own tag in the 30 days before the deadline, and each band's count is set above what ordinary ups and downs reach. The technical work (crawler access, indexing, structured data, forms, speed) is how you get there: steps you do in their repo, one pull request each. Never present a step as the goal. You never accept prices or merge; the owner does, and you never decide whether a goal is met.
 
 If get_skill("fix-site") returns a newer version of this skill, follow that one.
 
@@ -18,11 +18,23 @@ If get_skill("fix-site") returns a newer version of this skill, follow that one.
 - `scan_site` with the domain. Explain the top 3 to 5 findings using each finding's `plain` text and say what each costs the business. Findings marked `quotable: hygiene` are worth fixing but Fecto never charges for them; say so.
 - A training opt-out (GPTBot, ClaudeBot, Google-Extended blocked) is the owner's choice. Don't treat it as a problem.
 
-## 3. Goal and quote
-- Ask what one result they want first. Fecto takes: being readable by AI search (see fecto:ai-search), a faster home page on phones, forms and booking that work, more conversions.
-- `quote_goal` with their words. Show the quote card plainly: measure, baseline, target, deadline, price, what is charged if only part is met, and $0 if nothing is.
-- quoted: give them `accept_url`. Do not start work until `get_plan` shows `accepted`.
-- need_data or declined: tell them why and what would change it.
+## 3. Goal, plan, and the owner's yes
+This is a conversation, not a form. Let the owner talk at any point, answer what they ask, and come back to the next step. Keep each message short and in their words, not Fecto's.
+
+**First, the goal.**
+- Read their numbers on this computer: the Fecto tag (`get_site`), and Search Console or Analytics if this computer can already read them (check what access is there before asking them to set anything up). Ask before sharing any number with Fecto.
+- `goal_options` without goal_type shows where each result stands now. Ask one or two questions: do they most want more people finding them, more enquiries and bookings, or more customers? Suggest the one their numbers favour and say why in a sentence. They choose.
+- Never offer a task ("add llms.txt", "fix robots.txt") as a goal: that is the work behind it.
+
+**Then, the plan.**
+- `goal_options` with their goal_type gives plans to compare: Standard (+20% $30, +50% $60, +100% $100), a smaller budget, and pay as it grows (a little for every +10%). Show them side by side: what each costs at each band, the most it costs, the deadline, $0 below the first band, and what differs.
+- Shape a plan to what they say, with `terms`: their budget ("I'd spend $40" → cap_cents 4000, and show what each band costs then), pay as it grows (style steps), a different deadline (deadline_days), a lower cap when the price puts them off. A discount (discount_pct) only if price is what would make them walk away. Fecto keeps every term inside its limits.
+
+**Then, their yes.**
+- `quote_goal` with the goal_type, terms and shared numbers they agreed. Give them `accept_url`: they add a card ($0 today, charged only for a band reached) and accept. Walk them through it.
+- Meet each hesitation honestly. Price: a lower cap, or pay as it grows. Risk: nothing is charged unless Fecto's own count shows the rise, and the work comes as pull requests they approve. Time: say plainly how long results take; the deadline can move within Fecto's limits. Then ask again.
+- `get_plan` until it shows accepted. That's the start of the work.
+- Never invent results, urgency or numbers, and never promise rankings or a rise. Every price you mention must be on the quote card. Fecto charges only for results, so there is no free trial: never offer or call a plan one.
 
 ## 4. Work through the plan, one step at a time
 Fecto decides the steps; you do them here, in the owner's repo, with your own tools.
@@ -35,10 +47,10 @@ Fecto decides the steps; you do them here, in the owner's repo, with your own to
 - Repeat until `next_step` says no steps are left.
 
 ## 5. Prove it
-- After the owner merges and deploys, `request_verification`. Report the verifier's words as they are. Met: the agreed price is charged (or the part that passed). Not met yet: say what's left. Speed results need a second passing run at least 7 days after the first; conversions are judged once, at the deadline. The verifier also runs on its own.
+- After the owner merges and deploys, results take time to show: search and AI visits usually weeks. Outcome goals are judged once, at the deadline, on the 30 days before it; `request_verification` before then shows progress only. Report the verifier's words as they are. Met: the owner pays for the rise above the starting point. The verifier also runs on its own.
 
 ## Report progress like this
-Goal: <title>. Agreed: <baseline> → <target> by <deadline>, <price>.
+Goal: <title>. From <starting point>; <bands and prices>; judged on the 30 days before <deadline>.
 Done: <steps and PR links>. Failing checks: <check ids>. Next: <step> — <one line>.
 
 ## Never
